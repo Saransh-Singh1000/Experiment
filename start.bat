@@ -1,4 +1,6 @@
 @echo off
-cd /d %~dp0
-call .venv\Scripts\activate.bat
-python .venv\Client.py
+cd .venv/Scripts
+call activate.bat
+cd ..
+python Client.py
+cd ..
