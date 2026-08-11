@@ -11,7 +11,7 @@ import json
 from websocket import WebSocketApp as WSApp
 
 # === CONFIG ===
-SERVER_URL = 'ws://localhost:3000'
+SERVER_URL = 'wss://action-nutritional-motels-retailers.trycloudflare.com'
 PLAYER_UPDATE_INTERVAL = 1.0
 PLAYER_MODEL_PATH = 'Assets/Player.obj'
 PLAYER_TEXTURE_PATH = 'Assets/Player.png'
@@ -82,8 +82,9 @@ def on_ws_error(ws, error):
 def init_server_connection():
     global main_ws
     try:
+        server_url = SERVER_URL.strip()
         main_ws = WSApp(
-            SERVER_URL,
+            server_url,
             on_open=on_ws_open,
             on_message=on_ws_message,
             on_close=on_ws_close,
@@ -263,7 +264,7 @@ player = FirstPersonController(
 )
 player.gravity = 1
 player.height = scaled_height
-player.speed = 18
+player.speed = 12
 
 # Attach visual model manually
 player_model = Entity(
